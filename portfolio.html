@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editkaro.in - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Editkaro.in</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <!-- Filter Buttons -->
+            <div class="portfolio-filters">
+                <button class="filter-button active" data-category="all">All</button>
+                <button class="filter-button" data-category="short-form">Short Form</button>
+                <button class="filter-button" data-category="long-form">Long Form</button>
+                <button class="filter-button" data-category="gaming">Gaming Videos</button>
+                <button class="filter-button" data-category="football">Football Edits</button>
+                <button class="filter-button" data-category="ecommerce">eCommerce Ads</button>
+                <button class="filter-button" data-category="documentary">Documentary Style</button>
+                <button class="filter-button" data-category="color-grading">Color Grading</button>
+                <button class="filter-button" data-category="anime">Anime Videos</button>
+                <button class="filter-button" data-category="ads">Ads</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <!-- Short Form Video -->
+                <div class="portfolio-item short-form" data-video="short-video.mp4">
+                    <img src="short-video-thumbnail.jpg" alt="Short Form Video 1">
+                    <div class="overlay">
+                        <h3>Short Form Video</h3>
+                    </div>
+                </div>
+
+                <!-- Long Form Video -->
+                <div class="portfolio-item long-form" data-video="long-vedio.mp4">
+                    <img src="long-vedio-thumbnail.jpg.png" alt="Long Form Video 1">
+                    <div class="overlay">
+                        <h3>Long Form Video</h3>
+                    </div>
+                </div>
+
+                <!-- Gaming Video -->
+                <div class="portfolio-item gaming" data-video="gaming-vedio.mp4">
+                    <img src="gaming-vedio-thumbnail.jpg.png" alt="Gaming Video 1">
+                    <div class="overlay">
+                        <h3>Gaming Video</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item ecommerce" data-video="ecommerce-vedio.mp4">
+                    <img src="ecommerce-thumbnail.jpeg.png" alt="eCommerce Video 1">
+                    <div class="overlay">
+                        <h3>eCommerce Video</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item ecommerce" data-video="ecommerce ad.mp4">
+                    <img src="ecommercead.png" alt="eCommerce Ad Video 1">
+                    <div class="overlay">
+                        <h3>eCommerce Video</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item anime" data-video="anime_vedio.mp4">
+                    <img src="anime-video-thumbnail.png" alt="Anime Video 1">
+                    <div class="overlay">
+                        <h3>Anime Video</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item football" data-video="football.mp4">
+                    <img src="footbal.jpeg" alt="Football Video 1">
+                    <div class="overlay">
+                        <h3>Football Video</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item color-grading" data-video="colorgrading.mp4">
+                    <img src="colorgrading.jpg" alt="Football Video 1">
+                    <div class="overlay">
+                        <h3>colorgrading Video</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item ads" data-video="ad.mp4">
+                    <img src="ad.jpg" alt="Football Video 1">
+                    <div class="overlay">
+                        <h3>Ads Video</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for Video Playback -->
+    <div class="lightbox" style="display: none;">
+        <video controls autoplay></video>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Editkaro.in. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxVideo = lightbox.querySelector('video');
+
+        function openLightbox(videoSrc) {
+            lightbox.style.display = 'flex'; 
+            lightboxVideo.src = videoSrc; 
+            lightboxVideo.play(); 
+        }
+
+        
+        lightbox.addEventListener('click', function(event) {
+            if (event.target === lightbox) {
+                lightbox.style.display = 'none'; 
+                lightboxVideo.pause();
+                lightboxVideo.src = ''; 
+            }
+        });
+
+        
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video'); 
+                openLightbox(videoSrc); 
+            });
+        });
+    </script>
+</body>
+</html>
